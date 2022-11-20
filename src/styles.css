@@ -1,0 +1,23 @@
+
+html, body {
+  background-color: #2F4F30  
+}
+
+h1 { 
+    margin-left: 1%;
+}
+
+.botones {
+    margin-right: 2%;
+}
+
+.carta {
+  position: relative;
+  left: 75px;
+  width: 130px;
+  margin-left: -75px;
+}
+
+.alto {
+  height: 48vh;
+}
