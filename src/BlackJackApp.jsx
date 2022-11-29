@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Swal from 'sweetalert2';
 
 import { PlayerDiv, BankDiv } from './components';
-import { getNewDeck } from './store';
+import { timer } from './helpers';
+import { finishLoading, getNewDeck } from './store';
 
 
 export const BlackJackApp = () => {
@@ -14,45 +14,21 @@ export const BlackJackApp = () => {
   useEffect(() => {
     dispatch(getNewDeck());
   }, [])
-
-  //! Botones de disable
-  //! Nuevo estado que active useEffect para la alerta con setTimeout con cleanUp
-  // useEffect(() => {
-  //   (valueBank === valuePlayer) ? Swal.fire({
-  //     icon: 'success',
-  //     title: 'Victoria',
-  //     text: 'Ganaste, juego terminado',
-  //   })
-  //   : ""
-
-  // }, [valueBank]);
   
+  //! preguntar que es mejor si este useEffect en el que tengo un if dentro y se renderiza 
+  useEffect(() => {
+    if( valuePlayer > 21 ) {
+      dispatch(finishLoading());
+    }
+  }, [valuePlayer])
 
+  //! preguntar si es mejor este otro en el que la condicion esta dentro de lo que dispara al Effect
+  useEffect(() => {
+    if( isFinished === true) {
+      timer(valuePlayer)
+    }
+  }, [isFinished])
   
-  
-  // if ( valuePlayer <= 21 && valuePlayer > valueBank && valueBank > 0 ) {
-
-  //   Swal.fire({
-  //     icon: 'success',
-  //     title: 'Victoria',
-  //     text: 'Ganaste, juego terminado',
-  //   })
-  // }
-
-  // if ( valuePlayer > 21) {
- 
-  //   Swal.fire({
-  //     icon: 'error',
-  //     title: 'Derrota',
-  //     text: 'Perdiste, juego terminado',
-  //   })
-  // }
-
-    
-  
-  
-  
-  // console.log(newDeck)
 
   return (
     <>

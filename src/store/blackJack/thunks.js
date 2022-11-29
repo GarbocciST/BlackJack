@@ -22,9 +22,8 @@ export const getCard = () => {
         try {
             
             const currentStateDeck= getState().blackJack.newDeck;
-            // console.log(currentState)
+
             const {data} = await cardApi.get(`${currentStateDeck}/draw/?count=1`);
-            // console.log(data.cards[0]);
             
             const argument = data.cards[0]; 
             
@@ -37,7 +36,7 @@ export const getCard = () => {
             : dispatch(incrementValue(parseInt(argument.value)))
 
             // console.log(argument.value)
-            
+         
             // dispatch(incrementValue(argument.value)) JACK QUEEN KING ACE 
             
         } catch (error) {
@@ -78,7 +77,8 @@ export const getCardBank = () => {
                 dispatch(finishLoading());
 
             } while ( (bankPoints < playerPoints) && playerPoints <= 21 );
-
+            
+            
             //! Dispatch accion que active useEffect para la alerta
 
         } catch (error) {

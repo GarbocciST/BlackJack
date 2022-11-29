@@ -11,8 +11,8 @@ export const PlayerDiv = ({valuePlayer, cards , isFinished}) => {
     dispatch(getNewDeck());
   }
 
-  const disabled = valuePlayer > 21 || valuePlayer === 0;
-
+  
+  
   return (
     <> 
       <div className="alto">
@@ -21,8 +21,8 @@ export const PlayerDiv = ({valuePlayer, cards , isFinished}) => {
 
               <div className="botones align-self-center">
               <button className="btn btn-danger m-1" onClick={onNewGame}>Nuevo juego</button>
-              <button className="btn btn-primary m-1" onClick={ () => dispatch(getCard())} disabled={valuePlayer > 21 || isFinished}>Pedir carta</button>
-              <button className="btn btn-primary m-1" onClick={ () => dispatch(getCardBank())} disabled={disabled || isFinished}>Terminar ronda</button>
+              <button className="btn btn-primary m-1" onClick={ () => dispatch(getCard())} disabled={isFinished}>Pedir carta</button>
+              <button className="btn btn-primary m-1" onClick={ () => dispatch(getCardBank())} disabled={valuePlayer === 0 || isFinished}>Terminar ronda</button>
               </div>
           </div>
 

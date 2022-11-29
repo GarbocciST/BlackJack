@@ -1,1 +1,1 @@
-# Black Jack Con React-Redux toolkit + Vite
+# Proyecto de Black Jack Con Vite y React-Redux
