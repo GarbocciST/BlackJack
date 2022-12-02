@@ -21,3 +21,10 @@ h1 {
 .alto {
   height: 48vh;
 }
+
+.alert {
+  
+  animation: bounce; 
+  animation-duration: 1s; 
+
+}

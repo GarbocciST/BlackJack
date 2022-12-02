@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { PlayerDiv, BankDiv } from './components';
-import { timer } from './helpers';
+import { PlayerDiv, BankDiv, AlertPage } from './components';
 import { finishLoading, getNewDeck } from './store';
 
 
@@ -22,19 +21,20 @@ export const BlackJackApp = () => {
     }
   }, [valuePlayer])
 
-  //! preguntar si es mejor este otro en el que la condicion esta dentro de lo que dispara al Effect
-  useEffect(() => {
-    if( isFinished === true) {
-      timer(valuePlayer)
-    }
-  }, [isFinished])
-  
 
   return (
     <>
-     <PlayerDiv cards={cards} valuePlayer={valuePlayer} isFinished={isFinished}/>
+      {
+        (isFinished === true) ?
+        <AlertPage valuePlayer={valuePlayer} valueBank={valueBank}/> 
+        :
+        ""
+      }
 
-     <BankDiv cardsBank={cardsBank} valueBank={valueBank}/>
+      <PlayerDiv cards={cards} valuePlayer={valuePlayer} isFinished={isFinished}/>
+
+      <BankDiv cardsBank={cardsBank} valueBank={valueBank}/>  
+      
     
     </>
   )
